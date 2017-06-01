@@ -1,0 +1,97 @@
+<link rel="stylesheet" href="http://cache.amap.com/lbs/static/main.css?v=1.0" />
+<script type="text/javascript" src="http://webapi.amap.com/maps?v=1.3&key=ebb3310e602e7027987911af5e30be56"></script>
+<script type="text/javascript" src="http://cache.amap.com/lbs/static/addToolbar.js"></script>
+
+<div id="mapContainer" ; style="width:100%;height:460px;border-radius: 15px;margin-left: 10px; margin-top:60px ;z-index: 10;">
+
+	<div class="button-group" style="z-index: 100; margin-bottom: 360px;">
+		<input type="button" class="btn btn-primary" value="店铺信息修改" onclick="updateShop()" />
+		<input type="button" class="btn btn-primary" value="关停店铺" onclick="closeShop()" />
+		<input type="button" class="btn btn-primary" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="删除就地址后，就可以选择新地址了" value="店铺搬家" onclick="moveShop()" />
+	</div>
+	<script>
+		var count = 0;
+		var evt = null;
+		var map = null;
+		map = new AMap.Map('mapContainer', {
+
+			view: new AMap.View2D({
+				center: new AMap.LngLat(<%-rs[0].lng%>, <%-rs[0].lat%>), //120.001574,36.032374
+				zoom: 13
+			})
+		});
+		AMap.plugin(['AMap.ToolBar', 'AMap.Scale', 'AMap.OverView'],
+			function() {
+				map.addControl(new AMap.ToolBar());
+
+				map.addControl(new AMap.Scale());
+
+				map.addControl(new AMap.OverView({
+					isOpen: true
+				}));
+			});
+		<% rs.forEach(function(row){%>
+		var marker = new AMap.Marker({
+			map: map,
+			position: [<%-row.lng%>, <%-row.lat%>],
+			title: '<%- row.shopname%>',
+			<%if(row.liveflag==-1){%>
+			icon: "http://localhost:3000/images/view/stop.png",
+			<%}else if(row.liveflag==0){%>
+			icon: "http://localhost:3000/images/view/mark_bs.png",
+			<%}else if(row.liveflag==1){%>
+			icon: "http://localhost:3000/images/view/stop.png",
+			<%}else if(row.liveflag==2){%>
+			icon: "http://localhost:3000/images/view/stop.png",
+			<%}%>
+			offset: new AMap.Pixel(-10, -34)
+		});
+		marker.setMap(map);
+		marker.setLabel({
+			offset: new AMap.Pixel(-10, -20),
+			content: '<%- row.shopintr%>'
+		});
+		<%})%>
+
+		function moveShop() {
+			map.remove(marker);
+		}
+		var listener =
+			AMap.event.addListener(map, "click", eventHandler)
+
+		function eventHandler(e) {
+			var lnglat = e.lnglat;
+			/*	alert(lnglat.lng); //经度
+				alert(lnglat.lat);	//纬度*/
+			$('#xunwen').modal('show');
+		}
+
+		function closeShop() {
+			$('#closeShopModal').modal('show');
+		}
+
+		function updateShop() {
+			$('#updateShopModal').modal('show');
+		}
+
+		function dian() {
+			$('#point').val(evt.lnglat);
+
+			marker1 = new AMap.Marker({
+				map1: map,
+				position: evt.lnglat,
+				//	icon: "http://webapi.amap.com/theme/v1.3/markers/n/mark_b.png",
+				offset: new AMap.Pixel(-15, -20)
+			});
+			marker1.setMap(map);
+
+		}
+		// 实例化点标记
+		//				marker.setIcon('http://localhost:3000/image/view/stop.png');
+
+		$(function() {
+			$("[data-toggle='popover']").popover();
+		});
+	</script>
+</div>
+<% include Modal %>

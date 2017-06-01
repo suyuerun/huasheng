@@ -1,0 +1,35 @@
+<% include head %>
+<script>
+searchForm.keywords.value="<%-keywords%>";
+</script>
+<div class="row" style="margin-top: 10px;">
+	      <div class="col-sm-1"></div>
+	      <div class="col-sm-4">
+	      	<table class="table table-bordered">
+			  <tbody>
+			  <% rsGoods.forEach(function(row){ %>
+			    <tr>
+			      <td rowspan="2"><img src='../<%-row.goodsimg%>' style="width: 80px;height: auto;" /></td>
+			      <td>
+			      	<%-row.goodsname%><br/>
+			      	<%-row.goodsintro%>
+			      </td>
+			    </tr>
+			    <tr>
+			    	<td align='right'>
+			    		价格:<%-row.price%>&nbsp;
+			    		好评度:<%-row.praise%>&nbsp;
+			    		<button type="button" class="btn btn-danger btn-xs">go</button>&nbsp;
+			    	</td>
+			    </tr>
+			  <% }) %>
+			  </tbody>
+			</table>
+	      </div>
+	      <div class="col-sm-6">地图</div>
+	      <div class="col-sm-1"></div>
+</div>
+<!-- 模态框（Modal） -->
+				<% include ui/MText %>
+</body>
+</html>

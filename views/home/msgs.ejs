@@ -1,0 +1,92 @@
+<% include ../head %>
+<script>
+	function read() {
+		//	$.get('/admin/authInfo?id=' + id, function(rhtml) {
+		//	alert(rahtml);
+		//	$('#mbody').html(rhtml);
+		$('#myModal').modal('show');
+		//jq的AJAX提交方式
+
+		//	})
+
+	}
+</script>
+<div class="row" style="margin-top: 2em">
+	<div class="col-sm-1"></div>
+
+</div>
+<div class="col-sm-10" id='main'>
+	<table class="table table-hover" style="width: 664px;">
+		<caption>认证用户</caption>
+		<thead>
+			<tr>
+				<th>发送者</th>
+				<th>内容摘要</th>
+				<th>接收时间</th>
+				<th>状态</th>
+			</tr>
+		</thead>
+		<tbody>
+
+			<tr>
+				<td>
+
+				</td>
+				<td>
+
+				</td>
+				<td>
+
+				</td>
+				<td>
+					<a href="#" onclick='read()'>未读</a>
+				</td>
+			</tr>
+
+		</tbody>
+	</table>
+	<% include msgsData %>
+</div>
+<div class="col-sm-1"></div>
+<!--<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title" id="myModalLabel">详细消息</h4>
+			</div>
+			<div id='mbody' class="modal-body">
+				<form action='/users/login' method='post'>
+					<table id="refuseInfoTable" align='center' height='213px' align="center">
+						<tr>
+							<td>
+								发送人：<br>
+								<div id="msg" style="border: #00B7FF solid;width: 500px;height: auto;">
+									asdfghjkllkjhgfdsa
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td align="center">
+								<input type="hidden" name="id" value='<%-rs.id%>' />
+								<!--<input type="submit" class="btn btn-primary" value='驳回' />&nbsp;
+								<input type="button" class="btn btn-primary" value='返回' onclick='onback()' />
+							</td>
+						</tr>
+
+					</table>
+				</form>
+
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+				<button type="button" class="btn btn-primary">提交更改</button>
+			</div>
+		</div>
+	
+	</div>
+</div> -->
+
+</body>
+
+</html>

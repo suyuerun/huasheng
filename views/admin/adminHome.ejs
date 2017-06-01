@@ -1,0 +1,15 @@
+<% include ../head %>
+<script>
+	function renzheng(){
+		$('#main').load('/home/renzheng.ejs');
+	}
+</script>
+<div class="row" style="margin-top: 2em">
+	      <div class="col-sm-1"></div>
+	      <div class="col-sm-2"  style='background-color: #00B7FF;border-radius: 15px;'>
+		<% include ./left  %>	
+	      </div>
+	      <div class="col-sm-7" id='main'></div>
+	      <div class="col-sm-1"></div>
+  </body>
+</html>

@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+ 
+  <title>Document</title>
+  <script src = "./js/jquery-2.1.4.min.js"> </script>
+  <script>
+	$(function(){
+		//alert('hello,jquery');
+	//	$('input').val('hello');			  //input 打头的标签，里面全是hello  (标签选择器)
+	//	$('.c1').val('class = c1');			  //类选择器
+	//	$('#cc').val('id');					  //id选择器
+	//	$('[aa]').val('aaaaa');				  //属性选择器
+	//	$('[aa =""]').val('aaaaa');			  //属性筛选器
+
+		$('#t1 .aa td').html('<b>cccccc</b>');//层级选择器
+		$('#t2 .aa td').html('<b>dddddd</b>');//层级选择器
+	});
+	</script>
+ </head>
+ <body>
+ <input type = 'text' class = 'c1' aa ='a1''/><br>
+ <input type = 'text' class = 'c2' id = 'cc' aa ='a2'/><br>
+ <input type = 'text' class = 'c3' aa ='a3'/><br>
+  <table border= '1' id = 't1'>
+	<tr>
+		<td>aaaa
+		</td>
+		<td>aaaa
+		</td>
+		<td>aaaa
+		</td>
+	</tr>
+	<tr class='aa'>
+		<td >aaaa
+		</td>
+		<td>aaaa
+		</td>
+		<td>aaaa
+		</td>
+	</tr>
+	<tr>
+		<td>aaaa
+		</td>
+		<td>aaaa
+		</td>
+		<td>aaaa
+		</td>
+	</tr>
+  </table>
+
+  <table border= '1' id = 't2'>
+	<tr>
+		<td>bbbb
+		</td>
+		<td>bbbb
+		</td>
+		<td>bbbb
+		</td>
+	</tr>
+	<tr class='aa'>
+		<td >bbbb
+		</td>
+		<td>bbbb
+		</td>
+		<td>bbbb
+		</td>
+	</tr>
+	<tr>
+		<td>bbbb
+		</td>
+		<td>bbbb
+		</td>
+		<td>bbbb
+		</td>
+	</tr>
+  </table>
+ </body>
+</html>

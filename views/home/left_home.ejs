@@ -1,0 +1,25 @@
+<table align='center' height='523px' style="margin-top: 10px;">
+	<tr>
+		<td>
+			<a href='/home/'  style="text-decoration:none; text-emphasis-color: #000000;text-line-through-color: #245269;">消息</a>
+		</td>
+	</tr>
+	
+	<tr>
+		<td>
+			<!--//ejs语法-->
+			<% if(loginbean.role==1){%>
+			<a href='#' onclick='renzheng()' style="text-decoration:none; text-emphasis-color: #000000;text-line-through-color: #245269;">身份认证</a>
+			<% }else if(loginbean.role==2){ %> 身份认证中
+			<% }else if(loginbean.role==3){ %>
+			<br>
+			<a href="/home/pubShop" style="text-decoration:none; text-emphasis-color: #000000;text-line-through-color: #245269;">发布租赁位置</a>
+			<% }else if(loginbean.role==4){ %>
+			<br>
+			<a href="/home/shopmanage" style="text-decoration:none; text-emphasis-color: #000000;text-line-through-color: #245269;">管理店铺</a>
+			<%}else{%>
+			<a href="#" onclick='renzheng()' style="text-decoration:none; text-emphasis-color: #000000;text-line-through-color: #245269;">重新认证</a>
+			<%}%>
+		</td>
+	</tr>
+</table>

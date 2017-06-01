@@ -1,0 +1,61 @@
+<% include ../head %>
+<script>
+	function authInfo(id) {
+		$.get('/admin/authInfo?id='+id,function(rhtml){
+		//	alert(rahtml);
+			$('#mbody').html(rhtml);
+			$('#myModal').modal('show');
+				//jq的AJAX提交方式
+			
+		})
+		
+	}
+</script>
+<div class="row" style="margin-top: 2em">
+	<div class="col-sm-1"></div>
+	<div class="col-sm-2" style='background-color: #00B7FF;border-radius: 15px;'>
+		<% include ./left  %>
+	</div>
+	<div class="col-sm-7" id='main'>
+		<table class="table table-hover">
+			<caption>认证用户</caption>
+			<thead>
+				<tr>
+					<th>真实姓名</th>
+					<th>地址</th>
+					<th>申请时间</th>
+					<th>操作</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% rs.forEach(function(row){ %>
+				<tr>
+					<td>
+						<%-row.realname %>
+					</td>
+					<td>
+						<%-row.address %>
+					</td>
+					<td>
+						<%
+						time = row.createtime;
+						%>
+						<%-time.getMonth()+1%>月
+						<%-time.getDate()%>日
+						<%-time.getFullYear()%>年
+					</td>
+					<td>
+						<a href="#" onclick='authInfo("<%-row.id%>")'>查看详细</a>
+					</td>
+				</tr>
+				<% }) %>
+
+			</tbody>
+		</table>
+
+	</div>
+	<div class="col-sm-1"></div>
+	<% include ./authInfo %>
+	</body>
+
+	</html>

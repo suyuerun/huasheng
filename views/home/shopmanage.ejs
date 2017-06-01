@@ -1,0 +1,66 @@
+<% include ../head %>
+<script>
+	function pause(){
+			function onUpdateShop() {
+		
+		//表单里所有内容提交：serialize();
+		$.post('/home/updateShop', $('#closeShopForm').serialize(), function(rehtml) {
+			alert('1');
+			if(rehtml == 1) {
+				alert('发送成功');
+				$('#closeShopForm').modal('hide');
+				$('#closeShopForm').click();
+
+			} else {
+				alert('发送失败');
+			}
+		});
+		return false;
+	}
+		}
+	function pause(){
+			$('#choose').val('1');
+		}
+	function close(){
+			$('#choose').val('2');
+		}
+	function recover(){
+			$('#choose').val('0');
+		}
+	
+</script>
+<div class="row" style="margin-top: 1em;margin-left: 1em">
+<div class="col-sm-1"></div>
+<div class="col-sm-2" style='background-color: #00B7FF;border-radius: 15px;'>
+	<% include left_home %>
+</div>
+<div class="col-sm-8" id='main'>
+
+	<ul id="myTab" class="nav nav-tabs" style="margin-top: 10px;">
+		<li class="active">
+			<a href="#shopInfo" data-toggle="tab">
+				经营点信息
+			</a>
+		</li>
+		<li>
+			<a href="#goodsInfo" data-toggle="tab">商品管理</a>
+		</li>
+
+	</ul>
+
+	<div id="myTabContent" class="tab-content" >
+		<div class="tab-pane fade in active" id="shopInfo" >
+			<% include shopInfo %>
+		</div>
+		<div class="tab-pane fade" id="goodsInfo">
+			<input type="hidden" value="<%loginbean.id%>" name = 'shopid'>
+			<% include goodsmanage %>
+		</div>
+
+	</div>
+	<!--		<div id='toolbar' style="height: 27px;width: 215px;">请点击地图相关位置管理您的商铺</div>-->
+
+</div>
+
+<div class="col-sm-1"></div>
+</div>

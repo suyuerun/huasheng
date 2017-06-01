@@ -1,0 +1,68 @@
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<!--   onsubmit-->
+		<form onsubmit="return onSendNew();" id="sendNewForm" style="display: none;">
+
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					<h4 class="modal-title" id="myModalLabel">发送新消息</h4>
+				</div>
+				<div class="modal-body">
+
+					<div class="form-group">
+
+						<!--<label for="name">昵称：</label>-->
+						<input type="text" class="form-control" id="name" placeholder="请输入收件人昵称" name="nicheng">
+					</div>
+					<div class="form-group">
+						<!--<label for="name">消息内容：</label>-->
+						<textarea class="form-control" rows="3" placeholder="请输入消息内容" name="message"></textarea>
+					</div>
+
+					<!------------------end------------------>
+				</div>
+				<div class="modal-footer" style="text-align: center;">
+					<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+					<button type="submit" class="btn btn-primary">发送</button>
+				</div>
+			</div>
+			<!-- /.modal-content -->
+		</form>
+		<!--  -->
+		<form onsubmit="return onSendRep();" id="sendReplyForm" style="display: none;">
+
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					<h4 class="modal-title" id="myModalLabel">回复消息</h4>
+				</div>
+				<div class="modal-body">
+
+					<div class="form-group">
+						回复:
+						<nobr>
+							<div id='nc' style="float: none; margin-left: 10px;"></div>
+						</nobr>
+						回复内容:
+						<div id='nr' style="margin-left: 10px;"></div>
+						<!--<input type="hidden" name='nicheng11' id='nc1' />-->
+						<!--<label for="name">昵称：</label>-->
+						<input type="text" class="form-control" id="name1" placeholder="请输入抄送收件人昵称，多人用;隔开" name="nicheng1">
+					</div>
+					<div class="form-group">
+						<!--<label for="name">消息内容：</label>-->
+						<textarea class="form-control" rows="10" placeholder="请输入消息内容" name="message1"></textarea>
+					</div>
+
+					<!------------------end------------------>
+				</div>
+				<div class="modal-footer" style="text-align: center;">
+					<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+					<button type="submit" class="btn btn-primary">发送</button>
+				</div>
+			</div>
+			<!--/.modal-content-->
+		</form>
+	</div>
+</div>

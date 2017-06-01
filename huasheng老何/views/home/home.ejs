@@ -1,0 +1,47 @@
+<% include ../head %>
+<script>
+	function renzheng(){
+		$('#main').load('/home/renzheng.html');
+	}
+</script>
+<div class="row">
+	      <div class="col-sm-1"></div>
+	      <div class="col-sm-2"  style='background-color: #aaa'>
+	      	<% include ./left %>
+	      </div>
+	      <div class="col-sm-7" id='main'>
+	      	<table class="table table-bordered">
+			  <caption>消息列表</caption>
+			  <thead>
+			    <tr>
+			      <th>发送者</th>
+			      <th>内容</th>
+			      <th>发送时间</th>
+			      <th>操作</th>
+			    </tr>
+			  </thead>
+			  <tbody>
+			  	<% rs.forEach(function(row){ %>
+			    <tr>
+			      <td><%-row.nicheng%></td>
+			      <td><%-row.message%></td>
+			      <td>
+			      	<%
+			      	time = row.createtime;
+			      	%>
+			      <%-time.getFullYear()%>年
+			      <%-time.getMonth()+1%>月
+			      <%-time.getDate()%>日
+			      </td>
+			      <td>
+			      	回复&nbsp;
+			      	删除
+			      </td>
+			    </tr>
+			    <% }) %>
+			  </tbody>
+			</table>
+	      </div>
+	      <div class="col-sm-1"></div>
+  </body>
+</html>

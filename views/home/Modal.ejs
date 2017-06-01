@@ -1,0 +1,108 @@
+<script>
+	function pauseshop() {
+		$('#choose').val('1');
+	}
+
+	function closeshop() {
+		$('#choose').val('2');
+	}
+
+	function recovershop() {
+		$('#choose').val('0');
+	}
+</script>
+
+<div class="modal fade" id="updateShopModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<form action="/home/revise" id="reviseform" method="post" enctype="multipart/form-data">
+			<!-- multipart/form-data  二进制表单 传图片的 -->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+							&times;
+						</button>
+					<h4 class="modal-title" id="myModalLabel">
+							修改营业点信息
+						</h4>
+				</div>
+				<div class="modal-body">
+					<div class="form-group" id="myform">
+						<input type="text" class="form-control" name="shopname" placeholder="请输入营业点名称" value="<%-rs[0].shopname%>">
+
+						<textarea class="form-control" name="shopintr" align= "left" rows="5" placeholder="请输入营业简介">
+					      <%-rs[0].shopintr%>
+					    </textarea>
+						<input type="text" class="form-control" name="keywords" placeholder="请输入查询关键词" value="<%-rs[0].keywords%>">
+						<select class="form-control" name="shoptype" id="shoptype">
+							<option value="0">请选择经营类别</option>
+							<!-- 下拉框 -->
+							<% rss.forEach(function(row){ %>
+							<!-- 结果遍历 -->
+							<option value="<%-row.id%>">
+								<%-row.typename%>
+							</option>
+							<% }) %>
+							<!-- 根据id 获得类型 -->
+						</select>
+						<label for="lastname" class="col-sm-2 control-label">店铺图片</label>
+						<input type="file" name="photourl">
+						<!--  <input type="hidden" name="lng">隐藏域  存放经纬度
+					    <input type="hidden" name="lat"> -->
+					</div>
+				</div>
+				<div class="modal-footer" style="text-align: center;">
+					<button type="button" class="btn btn-default" data-dismiss="modal">关闭
+						</button>
+					<button type="submit" class="btn btn-primary" onclick='dian();'>
+							修改
+						</button>
+				</div>
+			</div>
+			<!-- /.modal-content -->
+		</form>
+	</div>
+	<!-- /.modal -->
+</div>
+
+<div class="modal fade" id="closeShopModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<form action="/home/stopshop" id="closeShopForm" method="post">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					<h4 class="modal-title" id="myModalLabel">请选择关停操作</h4>
+				</div>
+				<div class="modal-body">
+					<textarea class="form-control" rows="3" placeholder="请输入关停理由" name="closeReason"></textarea>
+					<input type="hidden" id="choose" name="choose" />
+				</div>
+				<div class="modal-footer" >
+					<button type="submit" class="btn btn-primary" onclick="pauseshop()">暂时关停</button>
+					<button type="submit" class="btn btn-primary" onclick="closeshop()">永久关闭</button>
+					<button type="submit" class="btn btn-primary" onclick="recovershop()">恢复营业</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+				</div>
+			</div>
+			<!-- /.modal-content -->
+		</div>
+		<!-- /.modal -->
+	</form>
+</div>
+
+
+
+<div class="modal fade" id="xunwen" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">模态框（Modal）标题</h4>
+            </div>
+            <div class="modal-body">确定要把新店铺放在此处吗</div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary" onclick="dian()">提交更改</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>

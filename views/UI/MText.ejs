@@ -1,0 +1,85 @@
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title" id="myModalLabel">登录AND注册</h4>
+			</div>
+			<div class="modal-body">
+				<form action='/users/login' method='post' name="loginForm">
+					<table align='center' height='213px' style='float:left'>
+						<tr>
+							<td align='right'>email:</td>
+							<td><input type="text" class="form-control" placeholder="请输入email" name='email'></td>
+						</tr>
+						<tr>
+							<td align='right'>密码:</td>
+							<td><input type="password" class="form-control" placeholder="请输入密码" name='pwd'></td>
+						</tr>
+						<tr>
+							<input type="hidden" name="url" />
+							<script>
+								loginForm.url.value = location.href;
+							</script>
+							<td colspan='2' align='center'>
+								<button type="submit" class="btn btn-primary">登陆</button>
+							</td>
+						</tr>
+					</table>
+				</form>
+				<!------------------end------------------>
+				<!------------------注册表单-------------->
+				<form method='post' action='/users/zhuce' id="reg" name='zhuCe'>
+					<table align='center' height='200px'>
+						<tr>
+							<td align='right'>email:</td>
+							<td><input type="text" class="form-control" placeholder="请输入email" name='email'></td>
+						</tr>
+						<tr>
+							<td align='right'>密码:</td>
+							<td><input type="password" class="form-control" placeholder="请输入密码" name='pwd' id="pwd"></td>
+						</tr>
+						<tr>
+							<td align='right'>重复密码:</td>
+							<td><input type="password" class="form-control" placeholder="请输入密码" name='repwd' id="repwd" ></td>
+						</tr>
+						<tr>
+							<td align='right'>昵称:</td>
+							<td><input type="text" class="form-control" placeholder="请输入昵称" name='nicheng'></td>
+						</tr>
+						<tr>
+							<td colspan='2' align='center'>
+								<input type="submit" class="btn btn-primary" value="注册"/>
+							</td>
+						</tr>
+					</table>
+				</form>
+				<!------------------end------------------>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+				<button type="button" class="btn btn-primary">提交更改</button>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!--<script>
+$(function(){
+	function insertManager() {  
+    var pwd= document.getElementById("pwd").value;  
+    var repwd = document.getElementById("repwd").value;  
+         if(pwd==repwd){  
+             alert("您输入的新密码与确认密码确认不一致");  
+//           signupForm.repassword.focus();  
+             return false;  
+               
+             }  
+          return true;  
+    }  
+			
+	});
+</script>-->
+
+
+	<!-- /.modal -->

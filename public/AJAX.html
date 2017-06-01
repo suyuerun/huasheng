@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>	
+		<script src = "./javascripts/jquery-2.1.4.min.js"> </script>
+		<script>
+			function dian(){
+			//	$('#dd').load('./');
+			$.get('/aa',function(rhtml){
+				alert(rhtml);
+				#('#dd').text(rhtml);
+			});
+			$.post('/zhuce',{email:'aa',pwd:'aa'},function(rhtml){
+			if(rhtml ==0){
+				alert('×¢²á³É¹¦' )
+			}
+			})
+			}
+		</script>
+	</head>
+	<body>
+		<a href="#" onclick='dian()'>onload</a>
+		<div  id = 'dd' style="width: 800px ;height: 600px;border:1px solid blue"></div>
+	</body>
+</html>
