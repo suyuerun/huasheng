@@ -27,7 +27,7 @@ router.get('/goods', function(req, res, next) {
 	        	return;
 	        }
 	        total = result.total;	//共有多少条记录
-	        sql = 'select s.id,g.id,s.shopname,s.lng,s.lat,g.goodsname,g.goodsimg,g.goodsintro,g.price,g.praise from goods g,shops s where g.id=? and g.shopid=s.id';
+	        sql = 'select s.id,g.id as goodsid,s.shopname,s.lng,s.lat,g.goodsname,g.goodsimg,g.goodsintro,g.price,g.praise from goods g,shops s where g.id=? and g.shopid=s.id';
 	        rsGoods=[];
 	        ii=0;
 	        for(var key in result['matches']){ //循环查出的id

@@ -12,6 +12,7 @@ var home = require('./routes/home');
 var admin = require('./routes/admin');
 var msg = require('./routes/msg');
 var search = require('./routes/search');
+var pay = require('./routes/pay');
 var app = express();
 var fs=require('fs');
 
@@ -72,6 +73,7 @@ app.use('/home', home);
 app.use('/admin', admin);
 app.use('/msg', msg);
 app.use('/search', search);
+app.use('/pay', pay);
 app.use(function(req,res,next){
 	var url = req.originalUrl;
 	console.log('你访问的是：'+url);

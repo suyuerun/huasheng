@@ -108,7 +108,7 @@ num int not null,
 shopid bigint not null,
 updtime timestamp not null,
 creattime timestamp not null,
-orderid bigint not null default 0,
+orderid bigint no0 t 0,
 unique key shoppinguniq (goodsid,uid,orderid)
 )ENGINE=innodb DEFAULT CHARSET=utf8;
 

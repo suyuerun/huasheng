@@ -1,4 +1,4 @@
-开发：
+
 	创建成功，跳转到管理页面
 		找入口： 
 			设计：
@@ -37,4 +37,43 @@ shopid
 		4.插入订单表，修改购物意向表中的orderid
 		5.显示订单，分别支付
 		
+确认支付：
+	1.提交：要购买商品的shoppingid
+	2.服务端：
+		接参
+		查shopping表,shopid,price,num
+		插入订单表
 		
+		sids = req.query.sids;
+		sidsArr = sids.split(',');
+		for(i=1,i<len;i++){
+			//查shoppings表
+		select id,shipid,price,num from shoppings where id=?;
+		//rs得到每个id的对应记录(shopid,price,num)
+		
+		
+		
+		if(shopObj[rs.shopid]){
+			obj = shopObj[rs.shopid];
+			obj.total += rs.price*rs.num;
+			obj.ids.push(id);
+			shopObj[rs.shopid] = obj;
+		}else{
+			var obj = {};
+			obj.total = rs.price*rs.num;
+			obj.ids = [id];
+			shopObj[rs.shopid]=obj;
+		}
+	}
+
+	//插入订单表
+	for(shopid in shopObj){
+		shopid,total,uid
+		得到一个订单id
+		arr = shopObj[shopid].ids;
+		//循环数组
+		update shoppings set orderid=(刚生成的定单id) where id=?
+
+	}
+
+	//
